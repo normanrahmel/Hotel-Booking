@@ -40,3 +40,9 @@ testem.log
 # System files
 .DS_Store
 Thumbs.db
+/src/app/bookings/bookings.component.css
+/src/app/bookings/bookings.component.html
+/src/app/bookings/bookings.component.ts
+/src/app/create-booking/create-booking.component.css
+/src/app/create-booking/create-booking.component.html
+/src/app/create-booking/create-booking.component.ts
