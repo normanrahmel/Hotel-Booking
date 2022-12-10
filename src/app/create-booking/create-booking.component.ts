@@ -26,18 +26,16 @@ export class CreateBookingComponent implements OnInit {
 
   ngOnInit(): void {
     if (this.router.url !== '/createBooking') {
-      let bookingById = this.bookingService.getBookingById(this.id);
-      this.booking = bookingById;
+      let bookingById = this.bookingService
+        .getBookingById(this.id)
+        .subscribe((result) => {
+          this.booking = result;
+        });
     }
   }
 
   save(): void {
-    let bookingById = this.bookingService.getBookingById(this.booking.id);
-    if (bookingById === undefined || bookingById === null) {
-      this.bookingService.addBooking(this.booking);
-    } else {
-      this.bookingService.updateBooking(this.booking);
-    }
+    this.bookingService.addBooking(this.booking).subscribe();
     this.router.navigate(['/bookings']);
   }
 

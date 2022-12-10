@@ -13,27 +13,30 @@ export class BookingService {
 
   bookingsUrl: string = '/api/bookings';
 
+  //ein Observable ist ein Stream von Daten, der von einem Server oder einer anderen Quelle stammt.
   getBookings(): Observable<Booking[]> {
     let response = this.httpClient.get<Booking[]>(this.bookingsUrl);
     console.log(response);
     return response;
   }
 
-  deleteBooking(booking: Booking): void {
-    let index = Bookings.indexOf(booking);
-    Bookings.splice(index, 1);
+  deleteBooking(booking: Booking): Observable<Booking> {
+    let response = this.httpClient.delete<Booking>(
+      this.bookingsUrl + '/' + booking.id
+    );
+    console.log(response);
+    return response;
   }
 
-  getBookingById(id: number): Booking {
-    return Bookings.find((b) => b.id === id)!;
+  getBookingById(id: number): Observable<Booking> {
+    let response = this.httpClient.get<Booking>(this.bookingsUrl + '/' + id);
+    console.log(response);
+    return response;
   }
 
-  addBooking(booking: Booking): void {
-    Bookings.push(booking);
-  }
-
-  updateBooking(booking: Booking): void {
-    let currentBooking = this.getBookingById(booking.id);
-    currentBooking = booking;
+  addBooking(booking: Booking): Observable<Booking> {
+    let response = this.httpClient.post<Booking>(this.bookingsUrl, booking);
+    console.log(response);
+    return response;
   }
 }
