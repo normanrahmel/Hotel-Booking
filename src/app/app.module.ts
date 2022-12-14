@@ -10,14 +10,21 @@ import { HttpClientModule } from '@angular/common/http';
 import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { InMemoryDataService } from './in-memory-data.service';
 import { EventSignupComponent } from './event-signup/event-signup.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
-  declarations: [AppComponent, BookingsComponent, CreateBookingComponent, EventSignupComponent],
+  declarations: [
+    AppComponent,
+    BookingsComponent,
+    CreateBookingComponent,
+    EventSignupComponent,
+  ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
     HttpClientModule,
+    ReactiveFormsModule,
     // Das Modul HttpClientInMemoryWebApiModule fängt HTTP-Anfragen ab
     // und gibt simulierte Serverantworten zurück.
     // Entfernen Sie es, wenn ein echter Server bereit ist, Anfragen zu empfangen.
